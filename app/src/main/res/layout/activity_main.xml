@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -15,11 +16,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView_city"
         android:layout_weight="1"
-        android:text="test"
-        android:onClick="onclickbuttonrefresh"/>
+        android:onClick="onclickbuttonrefresh"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:textStyle="normal|bold" />
 
     <TextView
-        android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView_temp"
@@ -30,25 +32,27 @@
         android:layout_alignParentEnd="true"
         android:textSize="36sp"
         android:textStyle="normal|bold"
-        android:textAlignment="center" />
-
-    <Button
-        android:text="Search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="88dp"
-        android:id="@+id/button2" />
+        android:textAlignment="center"
+        android:textAllCaps="false" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:layout_marginTop="62dp"
+        android:layout_marginTop="101dp"
         android:id="@+id/editText"
         android:hint="Enter City Name within Canada"
-        android:layout_below="@+id/textView_temp"
-        android:layout_alignParentStart="true" />
+
+        android:layout_alignParentStart="true"
+        android:textAlignment="textStart" />
+
+    <Button
+        android:text="Search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:id="@+id/button2"
+        android:layout_below="@+id/editText"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

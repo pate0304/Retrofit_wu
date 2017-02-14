@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.algonquincollege.pate0304.retrofit_wu.data.model.Image;
 import com.algonquincollege.pate0304.retrofit_wu.data.model.Weather;
 import com.algonquincollege.pate0304.retrofit_wu.data.remote.weatherAPI;
 
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
 
@@ -54,14 +57,22 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Weather> call, Response<Weather> response) {
                         //set output
-                        String city = response.body().getCurrentObservation().getObservationLocation().getCity();
-                        Double temp = response.body().getCurrentObservation().getTempC();
-                        Log.d("result",city+temp);
-                        TextView tvtemp = (TextView) findViewById(R.id.textView_temp);
-                        TextView tv = (TextView) findViewById(R.id.textView_city);
-                        tv.setText(city);
-                        String numasstring = new Double(temp).toString();
-                        tvtemp.setText(numasstring);
+                        if(response.body().getCurrentObservation() != null) {
+                            String city = response.body().getCurrentObservation().getObservationLocation().getCity();
+                            Double temp = response.body().getCurrentObservation().getTempC();
+                            Log.d("result", city + temp);
+                            TextView tvtemp = (TextView) findViewById(R.id.textView_temp);
+                            TextView tv = (TextView) findViewById(R.id.textView_city);
+                            tv.setText(city);
+                            String numasstring = new Double(temp).toString();
+                            tvtemp.setText(numasstring);
+                        }
+                        else
+                        {
+                            Toast.makeText(MainActivity.this,"Please Try different city!",Toast.LENGTH_LONG).show();
+                        }
+
+
 
                     }
 

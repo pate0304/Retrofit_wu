@@ -7,6 +7,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 /**
  * Created by shiva on 2017-02-14.
@@ -16,8 +17,8 @@ public interface weatherAPI {
 
     String BASE_URL ="http://api.wunderground.com/api/";
 
-    @GET("7169c140cf26dfcb/conditions/q/CANADA/ottawa.json")
-    Call<Weather> getweather();
+    @GET("7169c140cf26dfcb/conditions/q/Canada/{city}.json")
+    Call<Weather> getweather(@Path("city") String city);
 
     class Factory{
         //if instance is made use it or create new if doesnt !!

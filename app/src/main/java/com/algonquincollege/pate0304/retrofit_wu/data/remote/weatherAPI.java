@@ -17,8 +17,10 @@ public interface weatherAPI {
 
     String BASE_URL ="http://api.wunderground.com/api/";
 
+    //Queries
     @GET("7169c140cf26dfcb/conditions/q/Canada/{city}.json")
     Call<Weather> getweather(@Path("city") String city);
+
 
     class Factory{
         //if instance is made use it or create new if doesnt !!
@@ -40,5 +42,7 @@ public interface weatherAPI {
 
 
     }
+
+
 
 }

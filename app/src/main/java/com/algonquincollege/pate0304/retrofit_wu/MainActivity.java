@@ -40,12 +40,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-//        cityname = "ottawa";
-
-
-
-
-
         Button btn =(Button) findViewById(R.id.button2);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,18 +54,22 @@ public class MainActivity extends AppCompatActivity {
                         if(response.body().getCurrentObservation() != null) {
                             String city = response.body().getCurrentObservation().getObservationLocation().getCity();
                             Double temp = response.body().getCurrentObservation().getTempC();
+
                             Log.d("result", city + temp);
                             TextView tvtemp = (TextView) findViewById(R.id.textView_temp);
                             TextView tv = (TextView) findViewById(R.id.textView_city);
                             tv.setText(city);
                             String numasstring = new Double(temp).toString();
                             tvtemp.setText(numasstring);
+                            TextView time =(TextView) findViewById(R.id.textView_time);
+                            time.setText(response.body().getCurrentObservation().getObservationTime());
+                            TextView humidity =(TextView) findViewById(R.id.textView_humidity);
+                            humidity.setText(response.body().getCurrentObservation().getRelativeHumidity());
                         }
                         else
                         {
                             Toast.makeText(MainActivity.this,"Please Try different city!",Toast.LENGTH_LONG).show();
                         }
-
 
 
                     }
@@ -85,11 +83,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void search() {
-//        Log.d("city value on start",cityname);
-
-
-    }
 
 
 }
